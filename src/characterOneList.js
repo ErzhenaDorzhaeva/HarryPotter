@@ -1,17 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Character1({ student, onChange1, onChange2, onChange3, onChange4 }) {
+import { Gryf } from "./constants";
+import { Rav } from "./constants";
+import { Sly } from "./constants";
+import { Huff } from "./constants";
+
+function CharacterOneList({ student, inFaculty, fak }) {
   return (
     <span className="row">
       <span className="card">
         <span style={{ textAlign: "center" }} className="card.details">
           <h4>{student.name}</h4>
-          <span> {student.foto} </span>
+          <span> {student.photo} </span>
           <div>
             <button
               className="custom-btn btn-6"
-              onClick={onChange1.bind(null, student.id)}
+              onClick={() => inFaculty(student.id, Huff)}
             >
               Hufflepuff
             </button>
@@ -19,7 +24,7 @@ function Character1({ student, onChange1, onChange2, onChange3, onChange4 }) {
           <div>
             <button
               className="custom-btn btn-6"
-              onClick={onChange2.bind(null, student.id)}
+              onClick={() => inFaculty(student.id, Gryf)}
             >
               Gryffindor
             </button>
@@ -27,7 +32,7 @@ function Character1({ student, onChange1, onChange2, onChange3, onChange4 }) {
           <div>
             <button
               className="custom-btn btn-6"
-              onClick={onChange3.bind(null, student.id)}
+              onClick={() => inFaculty(student.id, Rav)}
             >
               Ravenclaw
             </button>
@@ -35,7 +40,7 @@ function Character1({ student, onChange1, onChange2, onChange3, onChange4 }) {
           <div>
             <button
               className="custom-btn btn-6"
-              onClick={onChange4.bind(null, student.id)}
+              onClick={() => inFacultygit add .(student.id, Sly)}
             >
               Slytherin
             </button>
@@ -46,8 +51,8 @@ function Character1({ student, onChange1, onChange2, onChange3, onChange4 }) {
   );
 }
 
-Character1.propTypes = {
+CharacterOneList.propTypes = {
   student: PropTypes.object.isRequired,
 };
 
-export default Character1;
+export default CharacterOneList;
