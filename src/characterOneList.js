@@ -40,7 +40,7 @@ function CharacterOneList({ student, inFaculty, fak }) {
           <div>
             <button
               className="custom-btn btn-6"
-              onClick={() => inFacultygit add .(student.id, Sly)}
+              onClick={() => inFacultygit(student.id, Sly)}
             >
               Slytherin
             </button>
