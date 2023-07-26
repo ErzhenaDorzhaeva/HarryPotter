@@ -161,7 +161,7 @@ function App() {
           inFaculty={inFaculty}
           fak={fak}
         />
-
+        <h2> Hello </h2>
         <div>
           <Link to="AboutUs">About Us</Link>
         </div>
