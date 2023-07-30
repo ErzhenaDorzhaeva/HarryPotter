@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import FacultyStudent from "./FacultyStudent";
 
-import { Gryf, Rav, Sly, Huff } from "../constants";
-function Faculty({ house, students, onToggle, type }) {
+function Faculty({ house, students, onToggle, index }) {
   return (
     <div className="flex-container border">
-      {(type === Gryf || type === Sly) && (
+      {index % 2 > 0 && (
         <div className="flex-item:nth-child(1)">
           <span>{house.img}</span>
         </div>
@@ -25,7 +24,7 @@ function Faculty({ house, students, onToggle, type }) {
         })}
       </div>
 
-      {(type === Huff || type === Rav) && (
+      {!(index % 2) && (
         <div className="flex-item:nth-child(3)">
           <span>{house.img}</span>
         </div>
@@ -38,6 +37,7 @@ Faculty.propTypes = {
   students: PropTypes.arrayOf(PropTypes.object).isRequired,
   house: PropTypes.object.isRequired,
   onToggle: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Faculty;

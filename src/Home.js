@@ -119,12 +119,12 @@ function Home() {
 
   return (
     <div className="border">
-      {HousesNames.map((name) => (
+      {HousesNames.map((name, index) => (
         <Faculty
           students={students.filter((student) => student.fak === name)}
-          type={name}
           onToggle={setDelete}
           house={houses.find((house) => house.name === name)}
+          index={index + 1}
         />
       ))}
 
