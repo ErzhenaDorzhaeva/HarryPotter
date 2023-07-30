@@ -2,6 +2,8 @@ import React from "react";
 import CharactersList from "./charactersList";
 import Faculty from "./faculty/Faculty";
 
+// FIXME: тут можно описать в одной строке, так как берутся данные из одного компонента
+// import { Gryf, Rav, Sly, Huff } from "../constants";
 import { Gryf } from "./constants";
 import { Rav } from "./constants";
 import { Sly } from "./constants";
@@ -102,6 +104,7 @@ function Home() {
     },
   ]);
 
+  // FIXME: what is it?
   const [fak] = React.useState("");
 
   function inFaculty(id, fak) {
@@ -128,10 +131,13 @@ function Home() {
 
   return (
     <div className="border">
+      {/* FIXME: Faculty повторяется 4 раза - нужно сделать использования компонента один раз через forEach  */}
       <Faculty
         students={students.filter((student) => student.fak === Huff)}
         type={Huff}
         onToggle={setDelete}
+        // FIXME: неправильно назван пропс (должен быть в единственном числе)
+        // FIXME: filter используется для фильтрации списка и он отдает массив объектов, в твоем случае незачем отдавать целый массив, нужно отдавать только один объект
         houses={houses.filter((house) => house.name === Huff)}
       />
       <Faculty

@@ -8,12 +8,15 @@ function App() {
   return (
     <div className="border">
       <span sstyle={{ margin: "10px" }}>
+        {/* FIXME: зачем пробелы перед словами? */}
         <Link to="/AboutUs"> About Us</Link>
       </span>
       <span style={{ margin: "10px" }}>
+        {/* FIXME: почему с маленькой буквы? */}
         <Link to="/Home"> about the houses of Hogwarts</Link>
       </span>
       <span style={{ margin: "10px" }}>
+        {/* FIXME: зачем пробелы перед словами? */}
         <Link to="/Information"> Information</Link>
       </span>
       <Routes>

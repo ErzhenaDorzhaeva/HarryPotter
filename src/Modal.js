@@ -1,4 +1,7 @@
 import React from "react";
+
+// FIXME: где используется данный компонент?
+// FIXME: грамматическая ошибка Madal => Modal
 export default class Madal extends React.Component {
   state = {
     isOpen: false,
