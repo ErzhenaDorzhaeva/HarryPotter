@@ -1,13 +1,8 @@
 import React from "react";
-import CharactersList from "./charactersList";
+import CharacterList from "./CharacterList";
 import Faculty from "./faculty/Faculty";
 
-// FIXME: тут можно описать в одной строке, так как берутся данные из одного компонента
-// import { Gryf, Rav, Sly, Huff } from "../constants";
-import { Gryf } from "./constants";
-import { Rav } from "./constants";
-import { Sly } from "./constants";
-import { Huff } from "./constants";
+import { Gryf, Rav, Sly, Huff } from "./constants";
 
 function Home() {
   const [students, setStudents] = React.useState([
@@ -94,18 +89,11 @@ function Home() {
       id: 4,
       name: Sly,
       img: (
-        <img
-          className="img2"
-          alt="12"
-          src="/faculty_photo/Slytherinm.png"
-        ></img>
+        <img className="img2" alt="12" src="/faculty_photo/Slytherin.png"></img>
       ),
       text: "Distinctive qualities of the students of this faculty : cunning, npm install eslint-plugin-react --save-devthe ability to achieve their goal in any way. They are no more stupid than the Ravenclaws, but are distinguished by their wit and frequent crossing of the boundaries of morality, which from the very foundation of Hogwarts secured a bad reputation for Slytherin",
     },
   ]);
-
-  // FIXME: what is it?
-  const [fak] = React.useState("");
 
   function inFaculty(id, fak) {
     setStudents(
@@ -136,36 +124,32 @@ function Home() {
         students={students.filter((student) => student.fak === Huff)}
         type={Huff}
         onToggle={setDelete}
-        // FIXME: неправильно назван пропс (должен быть в единственном числе)
-        // FIXME: filter используется для фильтрации списка и он отдает массив объектов, в твоем случае незачем отдавать целый массив, нужно отдавать только один объект
-        houses={houses.filter((house) => house.name === Huff)}
+        house={houses.find((house) => house.name === Huff)}
       />
       <Faculty
         students={students.filter((student) => student.fak === Gryf)}
         type={Gryf}
         onToggle={setDelete}
-        houses={houses.filter((house) => house.name === Gryf)}
+        house={houses.find((house) => house.name === Gryf)}
       />
       <Faculty
         students={students.filter((student) => student.fak === Rav)}
         type={Rav}
         onToggle={setDelete}
-        houses={houses.filter((house) => house.name === Rav)}
+        house={houses.find((house) => house.name === Rav)}
       />
       <Faculty
         students={students.filter((student) => student.fak === Sly)}
         type={Sly}
         onToggle={setDelete}
-        houses={houses.filter((house) => house.name === Sly)}
+        house={houses.find((house) => house.name === Sly)}
       />
       <div style={{ margin: "50px" }}>
-        <CharactersList
+        <CharacterList
           students={students.filter((student) => student.fak === null)}
           inFaculty={inFaculty}
-          fak={fak}
         />
       </div>
-      <div></div>
     </div>
   );
 }
