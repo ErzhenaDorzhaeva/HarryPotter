@@ -3,12 +3,22 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "mobx-react";
+import StudentsStore from "./store/StudentsStore";
+import FacultyStore from "./store/FacultyStore";
+
+const stores = {
+  StudentsStore,
+  FacultyStore,
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider {...stores}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
