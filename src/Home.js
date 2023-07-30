@@ -2,7 +2,7 @@ import React from "react";
 import CharacterList from "./CharacterList";
 import Faculty from "./faculty/Faculty";
 
-import { Gryf, Rav, Sly, Huff } from "./constants";
+import { Gryf, Rav, Sly, Huff, HousesNames } from "./constants";
 
 function Home() {
   const [students, setStudents] = React.useState([
@@ -119,31 +119,15 @@ function Home() {
 
   return (
     <div className="border">
-      {/* FIXME: Faculty повторяется 4 раза - нужно сделать использования компонента один раз через forEach  */}
-      <Faculty
-        students={students.filter((student) => student.fak === Huff)}
-        type={Huff}
-        onToggle={setDelete}
-        house={houses.find((house) => house.name === Huff)}
-      />
-      <Faculty
-        students={students.filter((student) => student.fak === Gryf)}
-        type={Gryf}
-        onToggle={setDelete}
-        house={houses.find((house) => house.name === Gryf)}
-      />
-      <Faculty
-        students={students.filter((student) => student.fak === Rav)}
-        type={Rav}
-        onToggle={setDelete}
-        house={houses.find((house) => house.name === Rav)}
-      />
-      <Faculty
-        students={students.filter((student) => student.fak === Sly)}
-        type={Sly}
-        onToggle={setDelete}
-        house={houses.find((house) => house.name === Sly)}
-      />
+      {HousesNames.map((name) => (
+        <Faculty
+          students={students.filter((student) => student.fak === name)}
+          type={name}
+          onToggle={setDelete}
+          house={houses.find((house) => house.name === name)}
+        />
+      ))}
+
       <div style={{ margin: "50px" }}>
         <CharacterList
           students={students.filter((student) => student.fak === null)}
