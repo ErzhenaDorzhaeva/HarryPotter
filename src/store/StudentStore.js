@@ -1,11 +1,8 @@
 import React from "react";
 import { makeAutoObservable } from "mobx";
-import { Gryf } from "../constants";
-import { Rav } from "../constants";
-import { Sly } from "../constants";
-import { Huff } from "../constants";
+import { Gryf, Rav, Huff, Sly } from "../constants";
 
-class CharacterControl {
+class StudentStore {
   students = [
     {
       id: 1,
@@ -61,13 +58,13 @@ class CharacterControl {
     makeAutoObservable(this);
   }
 
-  inFaculty(id, fak) {
-    this.students = this.students.map((student) => {
-      if (student.id === id) {
-        student.fak = fak;
-      }
-      return student;
-    });
+  changeFaculty(id, fak) {
+    // this.students = this.students.map((student) => {
+    //   if (student.id === id) {
+    //     student.fak = fak;
+    //   }
+    //   return student;
+    // });
   }
 
   setDelete(id) {
@@ -77,7 +74,6 @@ class CharacterControl {
       }
       return student;
     });
-    console.log("gh", this.students, id);
   }
 }
-export default CharacterControl = new CharacterControl();
+export default StudentStore = new StudentStore();

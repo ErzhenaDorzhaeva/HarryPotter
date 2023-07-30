@@ -2,17 +2,11 @@ import React from "react";
 import CharacterItem from "./CharacterItem";
 import PropTypes from "prop-types";
 
-function CharacterList({ students, inFaculty }) {
+function CharacterList({ students }) {
   return (
     <div>
       {students.map((student) => {
-        return (
-          <CharacterItem
-            student={student}
-            key={student.id}
-            inFaculty={inFaculty}
-          />
-        );
+        return <CharacterItem student={student} key={student.id} />;
       })}
     </div>
   );
@@ -20,7 +14,6 @@ function CharacterList({ students, inFaculty }) {
 
 CharacterList.prototypes = {
   students: PropTypes.arrayOf(PropTypes.object).isRequired,
-  inFaculty: PropTypes.func.isRequired,
 };
 
 export default CharacterList;

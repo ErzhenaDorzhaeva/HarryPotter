@@ -4,11 +4,11 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "mobx-react";
-import StudentsStore from "./store/StudentsStore";
+import StudentStore from "./store/StudentStore";
 import FacultyStore from "./store/FacultyStore";
 
 const stores = {
-  StudentsStore,
+  StudentStore,
   FacultyStore,
 };
 

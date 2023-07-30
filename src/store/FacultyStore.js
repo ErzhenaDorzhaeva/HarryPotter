@@ -1,10 +1,7 @@
 import React from "react";
-import { Gryf } from "../constants";
-import { Rav } from "../constants";
-import { Sly } from "../constants";
-import { Huff } from "../constants";
+import { Gryf, Huff, Sly, Rav } from "../constants";
 
-class Repository {
+class FacultyStore {
   houses = [
     {
       id: 1,
@@ -44,4 +41,4 @@ class Repository {
     },
   ];
 }
-export default Repository = new Repository();
+export default FacultyStore = new FacultyStore();

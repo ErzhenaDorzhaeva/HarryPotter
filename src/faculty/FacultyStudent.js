@@ -12,7 +12,7 @@ function FacultyStudent({ student, onToggle }) {
 
 FacultyStudent.propTypes = {
   student: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
 
 export default FacultyStudent;
