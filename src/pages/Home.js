@@ -1,11 +1,11 @@
 import React from "react";
-import CharacterList from "./CharacterList";
-import Faculty from "./faculty/Faculty";
-import FacultyStore from "./store/FacultyStore";
+import StudentsList from "../components/StudentsList";
+import Faculty from "../components/faculty/Faculty";
+import FacultyStore from "../store/FacultyStore";
 import { observer } from "mobx-react-lite";
-import StudentStore from "./store/StudentStore";
+import StudentStore from "../store/StudentStore";
 
-import { HousesNames } from "./constants";
+import { HousesNames } from "../constants";
 
 function Home() {
   const { houses } = FacultyStore;
@@ -24,7 +24,7 @@ function Home() {
       ))}
 
       <div style={{ margin: "50px" }}>
-        <CharacterList
+        <StudentsList
           students={students.filter((student) => student.fak === null)}
         />
       </div>

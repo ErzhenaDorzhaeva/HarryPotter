@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import AboutUs from "./AboutUs";
-import Information from "./Information";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
+import Information from "./pages/Information";
 
 function App() {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import StudentStore from "./store/StudentStore";
+import StudentStore from "../store/StudentStore";
 import { observer } from "mobx-react-lite";
-import { HousesNames } from "./constants";
+import { HousesNames } from "../constants";
 
-function CharacterItem({ student }) {
+function StudentItem({ student }) {
   const { changeFaculty } = StudentStore;
 
   return (
@@ -29,8 +29,8 @@ function CharacterItem({ student }) {
   );
 }
 
-CharacterItem.propTypes = {
+StudentItem.propTypes = {
   student: PropTypes.object.isRequired,
 };
 
-export default observer(CharacterItem);
+export default observer(StudentItem);

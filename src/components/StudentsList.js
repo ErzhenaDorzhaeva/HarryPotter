@@ -1,19 +1,19 @@
 import React from "react";
-import CharacterItem from "./CharacterItem";
+import StudentItem from "./StudentItem";
 import PropTypes from "prop-types";
 
-function CharacterList({ students }) {
+function StudentsList({ students }) {
   return (
     <div>
       {students.map((student) => {
-        return <CharacterItem student={student} key={student.id} />;
+        return <StudentItem student={student} key={student.id} />;
       })}
     </div>
   );
 }
 
-CharacterList.prototypes = {
+StudentsList.prototypes = {
   students: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default CharacterList;
+export default StudentsList;
