@@ -58,16 +58,16 @@ class StudentStore {
     makeAutoObservable(this);
   }
 
-  changeFaculty(id, fak) {
-    // this.students = this.students.map((student) => {
-    //   if (student.id === id) {
-    //     student.fak = fak;
-    //   }
-    //   return student;
-    // });
+  changeFaculty = (id, fak) => {
+    this.students = this.students.map((student) => {
+      if (student.id === id) {
+        student.fak = fak;
+      }
+      return student;
+    });
   }
 
-  setDelete(id) {
+  setDelete = (id) => {
     this.students = this.students.map((student) => {
       if (student.id === id) {
         student.fak = null;
