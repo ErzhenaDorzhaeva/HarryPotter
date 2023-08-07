@@ -1,55 +1,53 @@
-import React from "react";
 import { makeAutoObservable } from "mobx";
 import { Gryf, Rav, Huff, Sly } from "../constants";
-
 class StudentStore {
   students = [
     {
       id: 1,
       fak: Gryf,
-      photo: <img alt="1" className="img" src="photo/ronald.png"></img>,
+      photo: "photo/ronald.png",
       name: "Ronald Weasley",
     },
     {
       id: 2,
       fak: Sly,
-      photo: <img alt="2" className="img" src="photo/andromeda.png"></img>,
+      photo: "photo/andromeda.png",
       name: "Andromeda Tonks (née Black)",
     },
     {
       id: 3,
       fak: Huff,
-      photo: <img alt="3" className="img" src="photo/newton.png"></img>,
+      photo: "photo/newton.png",
       name: "Newton Scamander",
     },
     {
       id: 4,
       fak: Rav,
-      photo: <img alt="4" className="img" src="photo/lov.png"></img>,
+      photo: "photo/lov.png",
       name: "Luna Lovegood",
     },
     {
       id: 5,
       fak: null,
-      photo: <img alt="5" className="img" src="photo/notname.png"></img>,
+      photo: null,
       name: "Tumen Dorzhaev",
     },
     {
       id: 6,
       fak: null,
-      photo: <img alt="6" className="img" src="photo/notname.png"></img>,
+      photo: null,
       name: "Bator Rybdylov",
     },
     {
       id: 7,
       fak: null,
-      photo: <img alt="7" className="img" src="photo/notname.png"></img>,
+      photo: null,
       name: "Erzhena Dorzhaeva",
     },
     {
       id: 8,
       fak: null,
-      photo: <img alt="8" className="img" src="photo/notname.png"></img>,
+      photo: null,
       name: "Dizhitma Rybdylova",
     },
   ];
@@ -65,7 +63,7 @@ class StudentStore {
       }
       return student;
     });
-  }
+  };
 
   setDelete = (id) => {
     this.students = this.students.map((student) => {
@@ -74,6 +72,26 @@ class StudentStore {
       }
       return student;
     });
-  }
+  };
+
+  abbStudent = (name, fak) => {
+    const newStudent = {
+      id: this.students.length + 1,
+      fak: fak ? fak : null,
+      photo: null,
+      name: name,
+    };
+    console.log("newStudent", newStudent);
+    this.students.push(newStudent);
+  };
+  changeStudentItem = (id, name, fak) => {
+    this.students.map((student) => {
+      if (student.id === id) {
+        student.name = name;
+        student.fak = fak ? fak : null;
+      }
+      return student;
+    });
+  };
 }
 export default StudentStore = new StudentStore();
