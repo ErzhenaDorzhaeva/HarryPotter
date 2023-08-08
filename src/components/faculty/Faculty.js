@@ -7,7 +7,9 @@ function Faculty({ house, students, index }) {
     <div className="flex-container border">
       {index % 2 > 0 && (
         <div className="flex-item:nth-child(1)">
-          <span>{house.img}</span>
+          <span>
+            <img className="img2" alt="" src={house.img}></img>
+          </span>
         </div>
       )}
 
@@ -20,7 +22,9 @@ function Faculty({ house, students, index }) {
 
       {!(index % 2) && (
         <div className="flex-item:nth-child(3)">
-          <span>{house.img}</span>
+          <span>
+            <img className="img2" alt="" src={house.img}></img>
+          </span>
         </div>
       )}
     </div>
@@ -30,7 +34,6 @@ function Faculty({ house, students, index }) {
 Faculty.propTypes = {
   students: PropTypes.arrayOf(PropTypes.object).isRequired,
   house: PropTypes.object.isRequired,
-  onToggle: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };
 

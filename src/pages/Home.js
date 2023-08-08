@@ -43,7 +43,7 @@ function Home() {
         <button className="custom-btn btn-6" onClick={openModal}>
           Add Student
         </button>
-        <Modal isOpen={modalIsOpen}>
+        <Modal className="modal" isOpen={modalIsOpen}>
           <AddStudentModal onRequestClose={closeModal} />
         </Modal>
       </div>

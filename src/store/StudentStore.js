@@ -75,7 +75,7 @@ class StudentStore {
     console.log("newStudent", newStudent);
     this.students.push(newStudent);
   };
-  changeStudentItem = (id, name, fak) => {
+  changeStudent = (id, name, fak) => {
     this.students.map((student) => {
       if (student.id === id) {
         student.name = name;
@@ -83,6 +83,9 @@ class StudentStore {
       }
       return student;
     });
+  };
+  getDelete = (id) => {
+    this.students = this.students.filter((student) => student.id !== id);
   };
 }
 export default StudentStore = new StudentStore();

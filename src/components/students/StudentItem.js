@@ -4,10 +4,10 @@ import StudentStore from "../../store/StudentStore";
 import { observer } from "mobx-react-lite";
 import { HousesNames } from "../../constants";
 import Modal from "react-modal";
-import ChangStudentItemModal from "./ChangStudentItemModal";
+import ChangStudentModal from "./ChangStudentModal";
 
 function StudentItem({ student }) {
-  const { changeFaculty } = StudentStore;
+  const { changeFaculty, getDelete } = StudentStore;
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -45,14 +45,20 @@ function StudentItem({ student }) {
             Change details
           </button>
 
-          <Modal isOpen={modalIsOpen}>
+          <Modal className="modal" isOpen={modalIsOpen}>
             <div>
-              <ChangStudentItemModal
+              <ChangStudentModal
                 onRequestClose={closeModal}
                 student={student}
               />
             </div>
           </Modal>
+          <button
+            className="custom-btn btn-6"
+            onClick={() => getDelete(student.id)}
+          >
+            Delete
+          </button>
         </span>
       </span>
     </span>

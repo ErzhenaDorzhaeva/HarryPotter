@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StudentStore from "../../store/StudentStore";
 import { observer } from "mobx-react-lite";
 import { Rav, Huff, Sly, Gryf } from "../../constants";
-
+import PropTypes from "prop-types";
 function AddStudentModal({ onRequestClose }) {
   const { abbStudent } = StudentStore;
   const [name, setName] = useState("");
@@ -15,9 +15,11 @@ function AddStudentModal({ onRequestClose }) {
       onRequestClose();
     }
   }
+
   function getClose() {
     onRequestClose();
   }
+
   return (
     <div className="modal-body">
       <form onSubmit={submitHandler}>
@@ -58,4 +60,7 @@ function AddStudentModal({ onRequestClose }) {
     </div>
   );
 }
+AddStudentModal.propTypes = {
+  onRequestClose: PropTypes.func.isRequired,
+};
 export default observer(AddStudentModal);

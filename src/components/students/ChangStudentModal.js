@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import StudentStore from "../../store/StudentStore";
 import { observer } from "mobx-react-lite";
 import { Rav, Huff, Sly, Gryf } from "../../constants";
+import PropTypes from "prop-types";
 
-function ChangStudentItemModal({ onRequestClose, student }) {
-  const { changeStudentItem } = StudentStore;
+function ChangStudentModal({ onRequestClose, student }) {
+  const { changeStudent } = StudentStore;
   const [name, setName] = useState(student.name);
   const [fak, setFak] = useState(student.fak);
 
@@ -12,15 +13,17 @@ function ChangStudentItemModal({ onRequestClose, student }) {
     const id = student.id;
     event.preventDefault();
     if (name.trim()) {
-      changeStudentItem(id, name, fak);
+      changeStudent(id, name, fak);
       onRequestClose();
     }
   }
+
   function getClose() {
     onRequestClose();
   }
+
   return (
-    <div>
+    <div className="modal-body">
       <form onSubmit={submitHandler}>
         <div style={{ margin: "10px" }}>
           <input
@@ -59,4 +62,8 @@ function ChangStudentItemModal({ onRequestClose, student }) {
     </div>
   );
 }
-export default observer(ChangStudentItemModal);
+ChangStudentModal.propTypes = {
+  student: PropTypes.object.isRequired,
+  onRequestClose: PropTypes.func.isRequired,
+};
+export default observer(ChangStudentModal);
