@@ -59,16 +59,7 @@ class StudentStore {
   changeFaculty = (id, fak) => {
     this.students = this.students.map((student) => {
       if (student.id === id) {
-        student.fak = fak;
-      }
-      return student;
-    });
-  };
-
-  setDelete = (id) => {
-    this.students = this.students.map((student) => {
-      if (student.id === id) {
-        student.fak = null;
+        fak ? (student.fak = fak) : (student.fak = null);
       }
       return student;
     });

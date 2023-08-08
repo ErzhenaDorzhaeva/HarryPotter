@@ -11,7 +11,7 @@ import { HousesNames } from "../constants";
 
 function Home() {
   const { houses } = FacultyStore;
-  const { students, setDelete } = StudentStore;
+  const { students } = StudentStore;
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -29,7 +29,6 @@ function Home() {
         <Faculty
           key={name}
           students={students.filter((student) => student.fak === name)}
-          onToggle={setDelete}
           house={houses.find((house) => house.name === name)}
           index={index + 1}
         />
