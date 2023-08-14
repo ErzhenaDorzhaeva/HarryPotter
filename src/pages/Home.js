@@ -4,9 +4,8 @@ import Faculty from "../components/faculty/Faculty";
 import FacultyStore from "../store/FacultyStore";
 import { observer } from "mobx-react-lite";
 import StudentStore from "../store/StudentStore";
-import AddStudentModal from "../components/students/AddStudentModal";
 import Modal from "react-modal";
-
+import ChangStudentModal from "../components/students/ChangStudentModal";
 import { HousesNames } from "../constants";
 
 function Home() {
@@ -44,7 +43,7 @@ function Home() {
           Add Student
         </button>
         <Modal className="modal" isOpen={modalIsOpen}>
-          <AddStudentModal onRequestClose={closeModal} />
+          <ChangStudentModal onRequestClose={closeModal} student={""} />
         </Modal>
       </div>
     </div>

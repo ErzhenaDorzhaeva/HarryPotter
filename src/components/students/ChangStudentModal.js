@@ -5,15 +5,18 @@ import { Rav, Huff, Sly, Gryf } from "../../constants";
 import PropTypes from "prop-types";
 
 function ChangStudentModal({ onRequestClose, student }) {
-  const { changeStudent } = StudentStore;
-  const [name, setName] = useState(student.name);
-  const [fak, setFak] = useState(student.fak);
+  const { changeStudent, abbStudent } = StudentStore;
+  const checkName = student.name ? student.name : "";
+  const checkFak = student.fak ? student.fak : "";
+  const [name, setName] = useState(checkName);
+  const [fak, setFak] = useState(checkFak);
 
   function submitHandler(event) {
     const id = student.id;
     event.preventDefault();
+
     if (name.trim()) {
-      changeStudent(id, name, fak);
+      student.name ? changeStudent(id, name, fak) : abbStudent(name, fak);
       onRequestClose();
     }
   }
