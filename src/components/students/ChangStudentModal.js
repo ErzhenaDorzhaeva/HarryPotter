@@ -5,7 +5,7 @@ import { Rav, Huff, Sly, Gryf } from "../../constants";
 import PropTypes from "prop-types";
 
 function ChangStudentModal({ onRequestClose, student }) {
-  const { changeStudent, abbStudent } = StudentStore;
+  const { changeStudent, addStudent } = StudentStore;
   const checkName = student.name ? student.name : "";
   const checkFak = student.fak ? student.fak : "";
   const [name, setName] = useState(checkName);
@@ -16,7 +16,7 @@ function ChangStudentModal({ onRequestClose, student }) {
     event.preventDefault();
 
     if (name.trim()) {
-      student.name ? changeStudent(id, name, fak) : abbStudent(name, fak);
+      student.name ? changeStudent(id, name, fak) : addStudent(name, fak);
       onRequestClose();
     }
   }

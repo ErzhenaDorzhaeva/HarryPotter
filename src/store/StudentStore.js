@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { Gryf, Rav, Huff, Sly } from "../constants";
+
 class StudentStore {
   students = [
     {
@@ -65,15 +66,15 @@ class StudentStore {
     });
   };
 
-  abbStudent = (name, fak) => {
+  addStudent = (name, fak) => {
     const newStudent = {
       id: this.students.length + 1,
       fak: fak ? fak : null,
       photo: null,
       name: name,
     };
-    console.log("newStudent", newStudent);
     this.students.push(newStudent);
+    alert("Создан новый персонаж");
   };
   changeStudent = (id, name, fak) => {
     this.students.map((student) => {

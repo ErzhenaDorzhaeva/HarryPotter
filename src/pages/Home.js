@@ -21,6 +21,13 @@ function Home() {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+  // let array = [1, 8, 5, 7];
+  // // array.forEach((arr) => {
+  // //   console.log(arr);
+  // // });
+
+  // let array2 = array.map((arr) => arr * 2);
+  // console.log(array2);
 
   return (
     <div className="border">

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import FacultyStudent from "./FacultyStudent";
 
 function Faculty({ house, students, index }) {
+  let i = 1;
   return (
     <div className="flex-container border">
       {index % 2 > 0 && (
@@ -15,8 +16,9 @@ function Faculty({ house, students, index }) {
 
       <div className="flex-item:nth-child(2)">
         <h2 style={{ margin: "10px" }}>{house.text}</h2>
+
         {students.map((student) => {
-          return <FacultyStudent student={student} key={student.id} />;
+          return <FacultyStudent student={student} key={student.id} i={i++} />;
         })}
       </div>
 

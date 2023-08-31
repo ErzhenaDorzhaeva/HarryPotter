@@ -36,7 +36,6 @@ code {
   border-radius: 15px;
   transition: 0.3s;
 }
-
 .card-details {
   border-bottom: gray solid 1px;
   margin-bottom: 20px;
@@ -48,7 +47,6 @@ code {
   height: 200px;
   width: 200px;
 }
-
 .img2 {
   height: 250px;
   width: 250x;
@@ -233,7 +231,6 @@ code {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 .modal {
   position: fixed;
   top: 0;
@@ -251,4 +248,27 @@ code {
   border-radius: 5px;
   background: #fff;
   height: 200px;
+}
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: 0 15px 15px 0;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  background-color: #3775dd;
+  box-shadow: 0 2px #21487f;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  margin-left: 1rem;
 }

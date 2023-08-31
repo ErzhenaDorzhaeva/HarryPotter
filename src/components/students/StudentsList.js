@@ -5,9 +5,13 @@ import PropTypes from "prop-types";
 function StudentsList({ students }) {
   return (
     <div>
-      {students.map((student) => {
-        return <StudentItem student={student} key={student.id} />;
-      })}
+      {students.length > 0 ? (
+        students.map((student) => {
+          return <StudentItem student={student} key={student.id} />;
+        })
+      ) : (
+        <h4>Студентов не осталось</h4>
+      )}
     </div>
   );
 }
