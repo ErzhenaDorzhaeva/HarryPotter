@@ -74,7 +74,7 @@ class StudentStore {
       name: name,
     };
     this.students.push(newStudent);
-    alert("Создан новый персонаж");
+    alert("Добавлен новый ученик");
   };
   changeStudent = (id, name, fak) => {
     this.students.map((student) => {

@@ -4,30 +4,32 @@ import Faculty from "../components/faculty/Faculty";
 import FacultyStore from "../store/FacultyStore";
 import { observer } from "mobx-react-lite";
 import StudentStore from "../store/StudentStore";
-import Modal from "react-modal";
 import ChangStudentModal from "../components/students/ChangStudentModal";
 import { HousesNames } from "../constants";
+import { Button, Modal } from "antd";
 
 function Home() {
   const { houses } = FacultyStore;
   const { students } = StudentStore;
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true);
+  const showModal = () => {
+    setOpen(true);
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const handleOk = () => {
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 2000);
   };
-  // let array = [1, 8, 5, 7];
-  // // array.forEach((arr) => {
-  // //   console.log(arr);
-  // // });
 
-  // let array2 = array.map((arr) => arr * 2);
-  // console.log(array2);
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
   return (
     <div className="border">
@@ -46,11 +48,17 @@ function Home() {
         />
       </div>
       <div style={{ margin: "50px" }}>
-        <button className="custom-btn btn-6" onClick={openModal}>
+        <Button className="btn" onClick={showModal}>
           Add Student
-        </button>
-        <Modal className="modal" isOpen={modalIsOpen}>
-          <ChangStudentModal onRequestClose={closeModal} student={""} />
+        </Button>
+        <Modal
+          title="Данные об ученике"
+          open={open}
+          onCancel={handleCancel}
+          onOk={handleOk}
+          confirmLoading={confirmLoading}
+        >
+          <ChangStudentModal student={""} onCancel={handleCancel} />
         </Modal>
       </div>
     </div>

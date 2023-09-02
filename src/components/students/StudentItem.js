@@ -3,25 +3,35 @@ import PropTypes from "prop-types";
 import StudentStore from "../../store/StudentStore";
 import { observer } from "mobx-react-lite";
 import { HousesNames } from "../../constants";
-import Modal from "react-modal";
 import ChangStudentModal from "./ChangStudentModal";
-
+import { Button, Modal, Space, Card } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 function StudentItem({ student }) {
   const { changeFaculty, getDelete } = StudentStore;
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true);
+  const showModal = () => {
+    setOpen(true);
   };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  const handleOk = () => {
+    setConfirmLoading(true);
+    setTimeout(() => {
+      setOpen(false);
+      setConfirmLoading(false);
+    }, 2000);
+  };
+
+  const handleCancel = () => {
+    console.log("Clicked cancel button");
+    setOpen(false);
   };
 
   return (
     <span className="row">
-      <span className="card">
+      <Card>
         <span style={{ textAlign: "center" }} className="card.details">
           <h4>{student.name}</h4>
           <span>
@@ -33,34 +43,34 @@ function StudentItem({ student }) {
           </span>
           {HousesNames.map((name) => (
             <div key={name}>
-              <button
-                className="custom-btn btn-6"
+              <Button
+                className="btn"
                 onClick={() => changeFaculty(student.id, name)}
               >
                 {name}
-              </button>
+              </Button>
             </div>
           ))}
-          <button className="custom-btn btn-6" onClick={openModal}>
+          <Button className="btn" onClick={showModal}>
             Change details
-          </button>
+          </Button>
 
-          <Modal className="modal" isOpen={modalIsOpen}>
+          <Modal
+            title="Данные об ученике"
+            open={open}
+            onCancel={handleCancel}
+            onOk={handleOk}
+            confirmLoading={confirmLoading}
+          >
             <div>
-              <ChangStudentModal
-                onRequestClose={closeModal}
-                student={student}
-              />
+              <ChangStudentModal student={student} onCancel={handleCancel} />
             </div>
           </Modal>
-          <button
-            className="custom-btn btn-6"
-            onClick={() => getDelete(student.id)}
-          >
-            Delete
-          </button>
+          <Space>
+            <DeleteOutlined onClick={() => getDelete(student.id)} />
+          </Space>
         </span>
-      </span>
+      </Card>
     </span>
   );
 }
