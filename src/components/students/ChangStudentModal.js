@@ -15,8 +15,9 @@ function ChangStudentModal({ onCancel, student }) {
     const id = student.id;
 
     if (name.trim()) {
-      student.name ? changeStudent(id, name, fak) : addStudent(name, fak);
-      onCancel();
+      student.name
+        ? changeStudent(id, name, fak, onCancel)
+        : addStudent(name, fak, onCancel);
     }
   }
 

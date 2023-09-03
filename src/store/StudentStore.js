@@ -57,33 +57,65 @@ class StudentStore {
     makeAutoObservable(this);
   }
 
-  changeFaculty = (id, fak) => {
-    this.students = this.students.map((student) => {
-      if (student.id === id) {
-        fak ? (student.fak = fak) : (student.fak = null);
-      }
-      return student;
-    });
+  checkFakFull = (fak) => {
+    let studentsLenght = [];
+    studentsLenght = this.students.filter((student) => student.fak === fak);
+    if (studentsLenght.length > 2) {
+      return alert("Дом полон, прием в данный дом будет закрыт");
+    }
+  };
+  check = (fak) => {
+    let contin = true;
+    let studentsLenght = [];
+    studentsLenght = this.students.filter((student) => student.fak === fak);
+    if (studentsLenght.length > 2) {
+      contin = false;
+      return contin;
+    }
+    return contin;
   };
 
-  addStudent = (name, fak) => {
-    const newStudent = {
-      id: this.students.length + 1,
-      fak: fak ? fak : null,
-      photo: null,
-      name: name,
-    };
-    this.students.push(newStudent);
-    alert("Добавлен новый ученик");
+  changeFaculty = (id, fak) => {
+    if (this.check(fak) === true) {
+      this.students = this.students.map((student) => {
+        if (student.id === id) {
+          fak ? (student.fak = fak) : (student.fak = null);
+        }
+        return student;
+      });
+      this.checkFakFull(fak);
+    } else {
+      return alert("Выбирете другой дом");
+    }
   };
-  changeStudent = (id, name, fak) => {
-    this.students.map((student) => {
-      if (student.id === id) {
-        student.name = name;
-        student.fak = fak ? fak : null;
-      }
-      return student;
-    });
+
+  addStudent = (name, fak, onCancel) => {
+    if (this.check(fak) === true) {
+      const newStudent = {
+        id: this.students.length + 1,
+        fak: fak ? fak : null,
+        photo: null,
+        name: name,
+      };
+      this.students.push(newStudent);
+      alert("Добавлен новый ученик");
+      onCancel();
+    } else {
+      return alert("Выбирете другой дом, данный дом заполнен");
+    }
+  };
+  changeStudent = (id, name, fak, onCancel) => {
+    if (this.check(fak) === true) {
+      this.students.map((student) => {
+        if (student.id === id) {
+          student.name = name;
+          student.fak = fak ? fak : null;
+        }
+        return [student, onCancel()];
+      });
+    } else {
+      return alert("Выбирете другой дом, данный дом заполнен");
+    }
   };
   getDelete = (id) => {
     this.students = this.students.filter((student) => student.id !== id);

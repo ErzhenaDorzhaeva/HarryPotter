@@ -25,7 +25,6 @@ function StudentItem({ student }) {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpen(false);
   };
 
