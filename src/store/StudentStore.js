@@ -85,7 +85,7 @@ class StudentStore {
       });
       this.checkFakFull(fak);
     } else {
-      return alert("Выбирете другой дом");
+      return alert("Выберете другой дом");
     }
   };
 
@@ -101,7 +101,7 @@ class StudentStore {
       alert("Добавлен новый ученик");
       onCancel();
     } else {
-      return alert("Выбирете другой дом, данный дом заполнен");
+      return alert("Выберете другой дом, данный дом заполнен");
     }
   };
   changeStudent = (id, name, fak, onCancel) => {
@@ -114,7 +114,7 @@ class StudentStore {
         return [student, onCancel()];
       });
     } else {
-      return alert("Выбирете другой дом, данный дом заполнен");
+      return alert("Выберете другой дом, данный дом заполнен");
     }
   };
   getDelete = (id) => {

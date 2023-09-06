@@ -2,12 +2,19 @@ import React from "react";
 import StudentItem from "./StudentItem";
 import PropTypes from "prop-types";
 
-function StudentsList({ students }) {
+function StudentsList({ students, open, showModal }) {
   return (
     <div>
       {students.length > 0 ? (
         students.map((student) => {
-          return <StudentItem student={student} key={student.id} />;
+          return (
+            <StudentItem
+              student={student}
+              key={student.id}
+              open={open}
+              showModal={showModal}
+            />
+          );
         })
       ) : (
         <h4>Студентов не осталось</h4>

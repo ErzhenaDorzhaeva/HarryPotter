@@ -1,37 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import StudentStore from "../../store/StudentStore";
 import { observer } from "mobx-react-lite";
 import { HousesNames } from "../../constants";
-import ChangStudentModal from "./ChangStudentModal";
-import { Button, Modal, Space, Card } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
-function StudentItem({ student }) {
+import { Button, Space, Card } from "antd";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+function StudentItem({ student, open, showModal }) {
   const { changeFaculty, getDelete } = StudentStore;
-
-  const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-
-  const showModal = () => {
-    setOpen(true);
-  };
-
-  const handleOk = () => {
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 2000);
-  };
-
-  const handleCancel = () => {
-    setOpen(false);
-  };
 
   return (
     <span className="row">
       <Card>
         <span style={{ textAlign: "center" }} className="card.details">
+          <EditOutlined
+            style={{
+              marginLeft: "160px",
+            }}
+            onClick={showModal}
+          />
+          <Space>
+            <DeleteOutlined
+              style={{
+                marginLeft: "10px",
+              }}
+              onClick={() => getDelete(student.id)}
+            />
+          </Space>
           <h4>{student.name}</h4>
           <span>
             <img
@@ -50,24 +44,6 @@ function StudentItem({ student }) {
               </Button>
             </div>
           ))}
-          <Button className="btn" onClick={showModal}>
-            Change details
-          </Button>
-
-          <Modal
-            title="Данные об ученике"
-            open={open}
-            onCancel={handleCancel}
-            onOk={handleOk}
-            confirmLoading={confirmLoading}
-          >
-            <div>
-              <ChangStudentModal student={student} onCancel={handleCancel} />
-            </div>
-          </Modal>
-          <Space>
-            <DeleteOutlined onClick={() => getDelete(student.id)} />
-          </Space>
         </span>
       </Card>
     </span>

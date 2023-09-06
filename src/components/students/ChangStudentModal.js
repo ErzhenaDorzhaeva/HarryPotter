@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StudentStore from "../../store/StudentStore";
 import { observer } from "mobx-react-lite";
 import { Rav, Huff, Sly, Gryf } from "../../constants";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 
 function ChangStudentModal({ onCancel, student }) {
   const { changeStudent, addStudent } = StudentStore;
@@ -20,6 +20,13 @@ function ChangStudentModal({ onCancel, student }) {
         : addStudent(name, fak, onCancel);
     }
   }
+  const options = [
+    { value: Rav, label: Rav },
+    { value: Huff, label: Huff },
+    { value: Gryf, label: Gryf },
+    { value: Sly, label: Sly },
+    { value: "", label: "not selected" },
+  ];
 
   return (
     <div>
@@ -34,16 +41,13 @@ function ChangStudentModal({ onCancel, student }) {
         <Form.Item>
           <h3>Выберите факультет:</h3>
           <div style={{ margin: "10px" }}>
-            <select
-              value={fak}
-              onChange={(event) => setFak(event.target.value)}
-            >
-              <option value="">not selected</option>
-              <option value={Huff}>{Huff}</option>
-              <option value={Rav}>{Rav}</option>
-              <option value={Sly}>{Sly}</option>
-              <option value={Gryf}>{Gryf}</option>
-            </select>
+            <Select
+              defaultValue={fak}
+              onChange={(event) => {
+                setFak(event);
+              }}
+              options={options}
+            ></Select>
           </div>
         </Form.Item>
         <Form.Item>
@@ -51,6 +55,9 @@ function ChangStudentModal({ onCancel, student }) {
             Save
           </Button>
         </Form.Item>
+        <Button type="primary" className="btn" onClick={() => onCancel()}>
+          Cancel
+        </Button>
       </Form>
     </div>
   );

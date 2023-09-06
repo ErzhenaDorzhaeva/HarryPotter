@@ -6,25 +6,16 @@ import { observer } from "mobx-react-lite";
 import StudentStore from "../store/StudentStore";
 import ChangStudentModal from "../components/students/ChangStudentModal";
 import { HousesNames } from "../constants";
-import { Button, Modal } from "antd";
+import { Button, Modal, Divider } from "antd";
 
 function Home() {
   const { houses } = FacultyStore;
   const { students } = StudentStore;
 
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
 
   const showModal = () => {
     setOpen(true);
-  };
-
-  const handleOk = () => {
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 2000);
   };
 
   const handleCancel = () => {
@@ -33,17 +24,22 @@ function Home() {
 
   return (
     <div className="border">
+      <Divider orientation="right">Houses of Hogwarts:</Divider>
       {HousesNames.map((name, index) => (
         <Faculty
           key={name}
           students={students.filter((student) => student.fak === name)}
           house={houses.find((house) => house.name === name)}
           index={index + 1}
+          open={open}
+          showModal={showModal}
         />
       ))}
 
       <div style={{ margin: "50px" }}>
         <StudentsList
+          open={open}
+          showModal={showModal}
           students={students.filter((student) => student.fak === null)}
         />
       </div>
@@ -55,8 +51,7 @@ function Home() {
           title="Данные об ученике"
           open={open}
           onCancel={handleCancel}
-          onOk={handleOk}
-          confirmLoading={confirmLoading}
+          footer={null}
         >
           <ChangStudentModal student={""} onCancel={handleCancel} />
         </Modal>
